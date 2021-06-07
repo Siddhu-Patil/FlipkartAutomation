@@ -1,0 +1,5 @@
+Feature: FlipKart Automation
+Scenario: Flip Home page login
+Given User is on landing page
+When User logs in to application with username and password
+Then New Page is populated

@@ -1,0 +1,60 @@
+package stepDefinitions;
+
+import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
+import cucumber.api.java.en.Then;
+import cucumber.api.junit.Cucumber;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+@RunWith(Cucumber.class)
+public class StepDefinition {
+	WebDriver driver=null;
+
+	 @Given("^User is on landing page$")
+	    public void user_is_on_landing_page() {
+		 System.out.println("User is on Flipkart landing page");
+		 System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+			 driver=new ChromeDriver();
+	    	driver.get("https://www.flipkart.com");
+	        
+	    }
+
+	    @When("^user logs in with username and password$")
+	    public void user_logs_in_with_username_and_password()  {
+	    	System.out.println("User enters username and password");
+	    	driver.findElement(By.xpath("//input[@class='_2IX_2- VJZDxU']")).sendKeys("8310388821");
+	    	driver.findElement(By.xpath("//input[@class='_2IX_2- _3mctLh VJZDxU']")).sendKeys("Siddhu@123");
+	    	driver.findElement(By.xpath("//button[@class='_2KpZ6l _2HKlqd _3AWRsL']")).click();
+	    	
+	        
+	    }
+	    
+	    @And("^FlipKart Landing page is displayed$")
+	    public void flipkart_landing_page_is_displayed()  {
+	        System.out.println("User clicks on mobiles button");
+	        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	        driver.findElement(By.xpath("//div[@class='xtXmba']")).click();
+	    }
+
+	    @Then("^Search mobile less than 40000$")
+	    public void search_mobile_less_than_40000()  {
+	    	System.out.println("Mobile less than 40000");
+	    	driver.findElement(By.xpath("//input[@class='_3704LK']")).sendKeys("mobiles under 40000");
+	    	//driver.findElement(By.xpath("//svg[@width='20']")).click();
+	    	 //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	    	//Actions a =new Actions(driver);
+	    	//a.moveToElement(driver.findElement(By.xpath("//input[@class='_3704LK']"))).click().build().perform();
+	        
+	    }
+
+}

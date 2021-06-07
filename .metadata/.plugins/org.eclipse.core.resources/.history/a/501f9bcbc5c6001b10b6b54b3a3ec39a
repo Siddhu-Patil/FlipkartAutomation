@@ -1,0 +1,5 @@
+Feature: FlipKart Automation
+Scenario: Flip Home page login
+Given User is on landing page
+When userclicksmobilestab
+Then New Page is populated

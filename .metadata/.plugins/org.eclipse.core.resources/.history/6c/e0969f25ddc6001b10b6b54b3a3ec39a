@@ -1,0 +1,6 @@
+Feature: FlipKart Automation
+Scenario: FlipKart mobile search 
+Given User is on landing page
+When user logs in with username and password
+And FlipKart Landing page is displayed
+Then Search mobile less than 40000
